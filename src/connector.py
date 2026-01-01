@@ -82,14 +82,28 @@ class OpenCTIConnector:
 
                 indicators = self.indicator_manager.extract_indicators(post.content)
                 for indicator in indicators:
-                    print(f"   [!] Indicateur technique détecté : {indicator['value']}")
+                    print(f"   [!] Indicateur technique détecté ({indicator['type']}) : {indicator['value']}")
                     
+                    main_observable_type = "Unknown"
+                    if indicator["type"] == "Domain-Name":
+                        main_observable_type = "Domain-Name"
+                        pattern_stix = f"[domain-name:value = '{indicator['value']}']"
+                    
+                    elif indicator["type"] == "IPv4-Addr":
+                        main_observable_type = "IPv4-Addr"
+                        pattern_stix = f"[ipv4-addr:value = '{indicator['value']}']"
+                    
+                    elif "Hash" in indicator["type"]:
+                        main_observable_type = "File"
+                        algo = "MD5" if len(indicator['value']) == 32 else "SHA-256"
+                        pattern_stix = f"[file:hashes.'{algo}' = '{indicator['value']}']"
+
                     stix_indicator = self.api.indicator.create(
                         name=indicator["value"],
                         description=f"Extracted from social media post by {post.author.pseudo}",
                         pattern_type="stix",
-                        pattern=f"[{indicator['type']}:value = '{indicator['value']}']",
-                        x_opencti_main_observable_type="Domain-Name",
+                        pattern=pattern_stix,
+                        x_opencti_main_observable_type=main_observable_type,
                         valid_from=post.created_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                         score=80,
                         createdBy=author_stix["id"]
@@ -98,7 +112,7 @@ class OpenCTIConnector:
                     self.api.stix_core_relationship.create(
                         fromId=note["id"],
                         toId=stix_indicator["id"],
-                        relationship_type="based-on",
+                        relationship_type="related-to",
                         description="Ce message mentionne cet indicateur technique"
                     )
 

@@ -95,6 +95,7 @@ services:
     environment:
       - OPENCTI_URL=http://opencti:8080
       - OPENCTI_TOKEN=${OPENCTI_TOKEN}
+      - OLLAMA_HOST=http://host.docker.internal:11434
     depends_on:
       opencti:
         condition: service_started

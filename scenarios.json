@@ -28,6 +28,30 @@
         "HACKED! La base de données de {company} est en ligne. Téléchargez le dump ici : {url}",
         "Je vends des accès admin pour {company}. Contactez-moi sur le darknet. Preuve : {url}"
       ]
+    },
+    {
+      "name": "Attaque DDoS / Botnet",
+      "category": "SECURITY_INCIDENT",
+      "weight": 0.3,
+      "templates": [
+        "Alerte Firewall: Trafic sortant suspect vers l'IP {ip} détecté.",
+        "Le serveur C2 du botnet 'Mirai-X' est hébergé sur {ip}.",
+        "IOCs récents: {ip} et {hash} (Ransomware loader)."
+      ]
+    },
+    {
+      "name": "Campagne Phishing Bancaire",
+      "category": "PHISHING",
+      "weight": 0.5,
+      "ai_topic": "Urgence blocage compte bancaire pour activité suspecte",
+      "templates": ["... (tes anciens templates en backup) ..."]
+    },
+    {
+      "name": "Désinformation Politique",
+      "category": "DISINFORMATION",
+      "weight": 0.5,
+      "ai_topic": "Scandale sanitaire caché par le gouvernement concernant l'eau potable",
+      "templates": ["..."]
     }
   ]
 }
