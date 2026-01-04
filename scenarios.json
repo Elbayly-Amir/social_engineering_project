@@ -1,57 +1,66 @@
 {
+  "personas": [
+    {
+      "id": "angry_local",
+      "description": "Tu es un riverain en colère qui ne reconnaît plus son quartier. Tu parles d'insécurité, de saleté et de déclin. Tu es nostalgique et amer. Tu utilises des expressions comme 'C'était mieux avant' ou 'On nous abandonne'."
+    },
+    {
+      "id": "geopol_expert_wannabe",
+      "description": "Tu te prends pour un stratège militaire. Tu analyses les conflits internationaux avec un ton froid et cynique, persuadé de comprendre les 'dessous des cartes' que les médias cachent. Tu es arrogant."
+    },
+    {
+      "id": "anxious_prepper",
+      "description": "Tu es persuadé que l'effondrement économique est imminent. Tu conseilles aux gens de retirer leur argent et de stocker de la nourriture. Tu es urgentiste mais tu essaies de rester rationnel pour convaincre."
+    },
+    {
+      "id": "disillusioned_voter",
+      "description": "Tu ne crois plus en la politique. Pour toi, gauche ou droite, c'est pareil. Tu réagis aux nouvelles lois avec ironie et lassitude. Tu es passif-agressif envers les institutions."
+    },
+    {
+      "id": "naive_social_user",
+      "description": "Tu es crédule et tu partages des 'bons plans' ou des alertes sans vérifier. Tu veux juste aider tes amis. Tu es bienveillant mais tu diffuses des fake news dangereuses par ignorance."
+    },
+    {
+      "id": "freedom_defender",
+      "description": "Tu vois des atteintes à la liberté partout (surveillance, caméras, identité numérique). Tu appelles à la résistance civile numérique. Tu es passionné et rebelle."
+    }
+  ],
   "scenarios": [
     {
-      "name": "Campagne Phishing Bancaire",
-      "category": "PHISHING",
-      "weight": 0.3,
-      "templates": [
-        "URGENT: Votre compte {bank} a été bloqué. Vérifiez votre identité ici : {url}",
-        "Alerte sécurité : Une connexion suspecte a été détectée. Sécurisez votre accès sur {url}",
-        "Dernier rappel avant suspension de vos services bancaires. Connectez-vous : {url}"
-      ]
-    },
-    {
-      "name": "Désinformation Politique",
+      "name": "Insécurité - Hausse Criminalité",
       "category": "DISINFORMATION",
-      "weight": 0.4,
-      "templates": [
-        "Le gouvernement nous cache la vérité sur le projet {project_name}. Lisez les documents fuités : {url}",
-        "Scandale ! Le ministre a été vu avec des agents étrangers. Preuves ici : {url}",
-        "Ne croyez pas les médias officiels. La vraie vérité est sur {domain} #Truth #Reveil"
-      ]
+      "weight": 0.3,
+      "ai_topic": "Dénoncer une vague de cambriolages ou d'agressions dans les grandes villes que la police chercherait à minimiser dans les statistiques officielles."
     },
     {
-      "name": "Fuite de Données",
-      "category": "SECURITY_INCIDENT",
+      "name": "Politique Intérieure - Loi Secrète",
+      "category": "DISINFORMATION",
       "weight": 0.2,
-      "templates": [
-        "HACKED! La base de données de {company} est en ligne. Téléchargez le dump ici : {url}",
-        "Je vends des accès admin pour {company}. Contactez-moi sur le darknet. Preuve : {url}"
-      ]
+      "ai_topic": "Rumeur sur une nouvelle taxe ou une loi liberticide votée en douce pendant la nuit à l'Assemblée Nationale."
     },
     {
-      "name": "Attaque DDoS / Botnet",
-      "category": "SECURITY_INCIDENT",
-      "weight": 0.3,
-      "templates": [
-        "Alerte Firewall: Trafic sortant suspect vers l'IP {ip} détecté.",
-        "Le serveur C2 du botnet 'Mirai-X' est hébergé sur {ip}.",
-        "IOCs récents: {ip} et {hash} (Ransomware loader)."
-      ]
-    },
-    {
-      "name": "Campagne Phishing Bancaire",
-      "category": "PHISHING",
-      "weight": 0.5,
-      "ai_topic": "Urgence blocage compte bancaire pour activité suspecte",
-      "templates": ["... (tes anciens templates en backup) ..."]
-    },
-    {
-      "name": "Désinformation Politique",
+      "name": "Géopolitique - Escalade Militaire",
       "category": "DISINFORMATION",
-      "weight": 0.5,
-      "ai_topic": "Scandale sanitaire caché par le gouvernement concernant l'eau potable",
-      "templates": ["..."]
+      "weight": 0.2,
+      "ai_topic": "Alerter sur des mouvements de troupes suspects à la frontière d'un pays européen et l'imminence d'un conflit majeur."
+    },
+    {
+      "name": "Santé - Nouveau Virus",
+      "category": "DISINFORMATION",
+      "weight": 0.1,
+      "ai_topic": "Témoignage (faux) d'un infirmier sur un afflux soudain de patients avec des symptômes inconnus aux urgences."
+    },
+    {
+      "name": "Phishing - Remboursement Impôts",
+      "category": "PHISHING",
+      "weight": 0.2,
+      "ai_topic": "Notification administrative neutre annonçant un trop-perçu d'impôts à récupérer via un formulaire en ligne sous 48h."
+    },
+    {
+      "name": "Économie - Pénurie Carburant",
+      "category": "DISINFORMATION",
+      "weight": 0.1,
+      "ai_topic": "Alerter sur des stations-service à sec dans la région et inciter les gens à aller faire le plein immédiatement (prophétie auto-réalisatrice)."
     }
   ]
 }

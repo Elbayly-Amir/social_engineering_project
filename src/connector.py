@@ -81,6 +81,13 @@ class OpenCTIConnector:
                     )
 
                 indicators = self.indicator_manager.extract_indicators(post.content)
+
+                if post.technical_ip:
+                    indicators.append({
+                        "type": "IPv4-Addr",
+                        "value": post.technical_ip
+                    })
+
                 for indicator in indicators:
                     print(f"   [!] Indicateur technique détecté ({indicator['type']}) : {indicator['value']}")
                     

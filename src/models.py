@@ -18,6 +18,7 @@ class SocialMediaPost(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     platform: str = Field(..., description="Source: Twitter, Bluesky, Mastodon...")
     content: str = Field(..., min_length=1, description="Le texte du message")
+    technical_ip: Optional[str] = Field(None, description="Adresse IP source (métadonnée cachée)")
     geolocation_lat: Optional[float] = None
     geolocation_lon: Optional[float] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
